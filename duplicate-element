@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace duplicate_element_remove
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbers = { 10, 5, 20, 8, 15, 5, 10 };
+
+            int[] uniqueNumbers = RemoveDuplicates(numbers);
+
+            Console.WriteLine("Original array:");
+            PrintArray(numbers);
+
+            Console.WriteLine("\nArray with duplicates removed:");
+            PrintArray(uniqueNumbers);
+            Console.Read();
+        }
+
+        static int[] RemoveDuplicates(int[] arr)
+        {
+            List<int> uniqueList = new List<int>();
+            HashSet<int> seenNumbers = new HashSet<int>();
+
+            foreach (int num in arr)
+            {
+                if (!seenNumbers.Contains(num))
+                {
+                    seenNumbers.Add(num);
+                    uniqueList.Add(num);
+                }
+            }
+
+            return uniqueList.ToArray();
+        }
+
+        static void PrintArray(int[] arr)
+        {
+            foreach (int num in arr)
+            {
+                Console.Write(num + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+}
