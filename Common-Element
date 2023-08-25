@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace common_element
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] array1 = { 10, 5, 20, 8, 15 };
+            int[] array2 = { 8, 15, 12, 10, 25 };
+
+            int[] commonElements = FindCommonElements(array1, array2);
+
+            Console.WriteLine("Common elements:");
+            PrintArray(commonElements);
+            Console.Read();
+        }
+
+        static int[] FindCommonElements(int[] arr1, int[] arr2)
+        {
+            int maxLength = Math.Max(arr1.Length, arr2.Length);
+            int[] commonElements = new int[maxLength];
+            int count = 0;
+
+            foreach (int num1 in arr1)
+            {
+                foreach (int num2 in arr2)
+                {
+                    if (num1 == num2)
+                    {
+                        commonElements[count] = num1;
+                        count++;
+                        break; // No need to check rest of arr2 for the same num1
+                    }
+                }
+            }
+
+            Array.Resize(ref commonElements, count);
+            return commonElements;
+        }
+
+        static void PrintArray(int[] arr)
+        {
+            foreach (int num in arr)
+            {
+                Console.Write(num + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+}
