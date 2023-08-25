@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace secoind_smallestt_element
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbers = { 10, 5, 20, 8, 15 };
+            int secondSmallest = FindSecondSmallest(numbers);
+
+            Console.WriteLine("The second smallest element is: " + secondSmallest);
+            Console.Read();
+        }
+
+        static int FindSecondSmallest(int[] arr)
+        {
+            if (arr.Length < 2)
+            {
+                throw new ArgumentException("Array must contain at least two elements.");
+            }
+
+            int smallest = int.MaxValue;
+            int secondSmallest = int.MaxValue;
+
+            foreach (int num in arr)
+            {
+                if (num < smallest)
+                {
+                    secondSmallest = smallest;
+                    smallest = num;
+                }
+                else if (num < secondSmallest && num != smallest)
+                {
+                    secondSmallest = num;
+                }
+            }
+
+            return secondSmallest;
+        }
+    }
+}
