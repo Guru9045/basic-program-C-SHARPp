@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace multiply_each_element
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbers = { 10, 5, 20, 8, 15 };
+            int factor = 3;
+
+            Console.WriteLine("Original array:");
+            PrintArray(numbers);
+
+            MultiplyArray(numbers, factor);
+
+            Console.WriteLine("\nArray after multiplying by " + factor + ":");
+            PrintArray(numbers);
+            Console.Read();
+        }
+
+        static void MultiplyArray(int[] arr, int factor)
+        {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] *= factor;
+            }
+        }
+
+        static void PrintArray(int[] arr)
+        {
+            foreach (int num in arr)
+            {
+                Console.Write(num + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+}
